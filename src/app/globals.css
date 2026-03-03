@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Paper tones */
+  --color-paper: #f5f0e8;
+  --color-paper-dark: #ede5d0;
+  --color-paper-shadow: #d4c9b0;
+
+  /* Wood tones */
+  --color-wood: #5c3317;
+  --color-wood-light: #8b5a2b;
+  --color-wood-highlight: #a0722a;
+
+  /* Ink */
+  --color-ink: #2c2016;
+  --color-ink-muted: #7a6a5a;
+  --color-ink-faint: #b0a090;
+
+  /* Accent */
+  --color-tape: #f0e68c88;
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: #f5f0e8;
+  color: #2c2016;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 폴라로이드 카드 */
+.polaroid {
+  background: #fff;
+  padding: 10px 10px 38px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 영수증 카드 — 톱니 상하단 */
+.receipt {
+  background: #fffef8;
+  position: relative;
+}
+.receipt::before,
+.receipt::after {
+  content: '';
+  display: block;
+  height: 8px;
+  background-image: radial-gradient(circle at 5px 8px, transparent 5px, #f5f0e8 5px);
+  background-size: 10px 8px;
+  background-repeat: repeat-x;
+}
+.receipt::before {
+  background-position: 0 0;
+}
+.receipt::after {
+  background-image: radial-gradient(circle at 5px 0px, transparent 5px, #f5f0e8 5px);
+  background-position: 0 0;
+}
+
+/* 책 등(spine) 세로 텍스트 */
+.spine-text {
+  writing-mode: horizontal-tb;
+  transform: rotate(-90deg);
+  white-space: nowrap;
 }
